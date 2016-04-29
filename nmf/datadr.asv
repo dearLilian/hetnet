@@ -1,0 +1,36 @@
+clear all;
+clc all;
+
+
+%% initialize
+%
+
+datapath = '';
+object = {'authors', 'confs', 'terms'};
+num = {12000, 20, 5200};
+dim = {20,10,20};
+
+datapath = '';
+object = {'papers', 'authors', 'terms'};
+num = {};
+dim{};
+
+datapath = '';
+object = {};
+num = {};
+dim{};
+
+%% 分批处理
+
+for(i = 1:length(object))
+    
+    file = [datapath, object(1), '.txt'];
+    pcaOutput = [datapath, object(i), '_PCAReduce.txt'];
+    nmfOutput = [datapath, object(i), '_NMFReduce.txt'];
+    
+    all = getUnifiedNet(file);
+    %% nmf
+    [W,H,iter, HIS] = nmf(all, dim(i), 'type', 'plain');
+    dlwrite();
+
+    %% pca

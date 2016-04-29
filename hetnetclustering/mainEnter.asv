@@ -1,0 +1,42 @@
+%%the implement of hetNetClustering
+
+%%  1:initialization
+%%
+dir = 'E:\paper\hetnetclustering\original'
+
+net1_files = dir + '\CA.txt';
+net2_files = dir + 'CT.txt';
+labels_file = dir + 'conf_labels.txt';
+
+
+%%  2.input data
+%%
+net1_view = load_from_triple(net1_files);
+net2_view = load_from_triple(net2_files);
+
+
+%%  3.decoposition from hetnet to homnet
+%%
+net1 = net1_view * 
+
+
+
+
+%%  4. merge into a unified homnet
+%%
+
+
+
+%%  5.do clustering
+%%
+
+sigma = 0;
+num_clusters = 4;
+[cluster_labels, evd_time, kmeans_time, total_time] = sc(A, sigma, num_clusters);
+
+
+%%  6.evaluating the result
+%%
+true_labels = load(labels_file);
+nmi = nmi(true_labels, cluster_labels)
+accuracy = accuracy(true_labels, cluster_labels)
